@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{df}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{λ}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{λs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theoretical}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{theor\PYGZus{}probs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{empirical}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{emp\PYGZus{}probs}\PYG{p}{)}
+\PYG{n}{CSV}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}parameter\PYGZus{}sweep\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}summary.csv\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{df}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Таблица сохранена в \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}parameter\PYGZus{}sweep\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}summary.csv\PYGZdq{}}\PYG{p}{))}
+\end{MintedVerbatim}

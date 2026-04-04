@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}exponential\PYGZus{}growth\PYGZus{}α=}\PYG{l+s+si}{\PYGZdl{}α}\PYG{l+s}{.png\PYGZdq{}}\PYG{p}{))}
+\end{MintedVerbatim}

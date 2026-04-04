@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{parametric\PYGZus{}plots\PYGZus{}dir}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}parameter\PYGZus{}sweep\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{mkpath}\PYG{p}{(}\PYG{n}{parametric\PYGZus{}plots\PYGZus{}dir}\PYG{p}{)}
+\end{MintedVerbatim}

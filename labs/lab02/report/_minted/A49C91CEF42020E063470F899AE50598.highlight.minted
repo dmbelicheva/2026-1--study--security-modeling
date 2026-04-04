@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{hourly\PYGZus{}counts}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:hourly\PYGZus{}counts}\PYG{p}{]}
+\PYG{n}{intervals}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:intervals}\PYG{p}{]}
+\PYG{n}{attack\PYGZus{}times}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:attack\PYGZus{}times}\PYG{p}{]}
+\PYG{n}{λ}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:λ}\PYG{p}{]}
+\PYG{n}{T}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:T}\PYG{p}{]}
+\PYG{n}{emp\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:emp\PYGZus{}prob}\PYG{p}{]}
+\PYG{n}{theor\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:theor\PYGZus{}prob}\PYG{p}{]}
+\end{MintedVerbatim}

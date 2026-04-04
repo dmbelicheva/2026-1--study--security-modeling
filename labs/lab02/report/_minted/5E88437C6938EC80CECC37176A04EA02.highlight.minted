@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{if}\PYG{+w}{ }\PYG{o}{!}\PYG{n}{isfile}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{error}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Файл }\PYG{l+s+si}{\PYGZdl{}filename}\PYG{l+s}{ не найден. Сначала запустите scripts/run\PYGZus{}experiment.jl для генерации данных.\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{end}
+\end{MintedVerbatim}

@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{bench\PYGZus{}df}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{benchmark\PYGZus{}results}\PYG{p}{)}
+\PYG{n}{p4}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{bench\PYGZus{}df}\PYG{o}{.}\PYG{n}{α}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{bench\PYGZus{}df}\PYG{o}{.}\PYG{n}{time}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{seriestype}\PYG{o}{=}\PYG{l+s+ss}{:scatter}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{label}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Время вычисления\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Скорость роста, α\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Время вычисления, сек\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Зависимость времени вычисления от α\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{markersize}\PYG{o}{=}\PYG{l+m+mi}{8}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{markercolor}\PYG{o}{=}\PYG{l+s+ss}{:green}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{legend}\PYG{o}{=}\PYG{l+s+ss}{:topleft}
+\PYG{p}{)}
+\end{MintedVerbatim}

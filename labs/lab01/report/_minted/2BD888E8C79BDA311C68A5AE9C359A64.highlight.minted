@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{u0}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{1.0}\PYG{p}{]}\PYG{+w}{ }\PYG{c}{\PYGZsh{} начальная популяция}
+\PYG{n}{α}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.3}\PYG{+w}{ }\PYG{c}{\PYGZsh{} скорость роста}
+\PYG{n}{tspan}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{10.0}\PYG{p}{)}\PYG{+w}{ }\PYG{c}{\PYGZsh{} временной интервал}
+\PYG{n}{prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ODEProblem}\PYG{p}{(}\PYG{n}{exponential\PYGZus{}growth!}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tspan}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{α}\PYG{p}{)}
+\PYG{n}{sol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{solve}\PYG{p}{(}\PYG{n}{prob}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Tsit5}\PYG{p}{(),}\PYG{+w}{ }\PYG{n}{saveat}\PYG{o}{=}\PYG{l+m+mf}{0.1}\PYG{p}{)}
+\end{MintedVerbatim}

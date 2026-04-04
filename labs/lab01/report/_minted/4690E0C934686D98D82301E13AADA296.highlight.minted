@@ -1,0 +1,32 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{all\PYGZus{}results}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[]}
+\PYG{n}{all\PYGZus{}dfs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[]}
+\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{enumerate}\PYG{p}{(}\PYG{n}{all\PYGZus{}params}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Прогресс: }\PYG{l+s+si}{\PYGZdl{}i}\PYG{l+s}{/}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{length}\PYG{p}{(}\PYG{n}{all\PYGZus{}params}\PYG{p}{))}\PYG{l+s}{ | α = }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:α}\PYG{p}{])}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{data}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{path}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{produce\PYGZus{}or\PYGZus{}load}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{datadir}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}parametric\PYGZus{}scan\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Данные}
+\PYG{+w}{        }\PYG{n}{params}\PYG{p}{,}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Текущий набор параметров}
+\PYG{+w}{        }\PYG{n}{run\PYGZus{}single\PYGZus{}experiment}\PYG{p}{,}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Функция для выполнения}
+\PYG{+w}{        }\PYG{n}{prefix}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}scan\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Префикс имени файла}
+\PYG{+w}{        }\PYG{n}{tag}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{verbose}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Не выводить подробности для каждого запуска}
+\PYG{+w}{    }\PYG{p}{)}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Автоматическое сохранение/загрузка каждого эксперимента}
+\PYG{+w}{    }\PYG{n}{result\PYGZus{}summary}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{merge}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{params}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{        }\PYG{l+s+ss}{:final\PYGZus{}population}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}final\PYGZus{}population\PYGZdq{}}\PYG{p}{],}
+\PYG{+w}{        }\PYG{l+s+ss}{:doubling\PYGZus{}time}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}doubling\PYGZus{}time\PYGZdq{}}\PYG{p}{],}
+\PYG{+w}{        }\PYG{l+s+ss}{:filepath}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{path}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Путь к сохраненным данным}
+\PYG{+w}{        }\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{)}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Сохраняем сводные результаты (используем символы для параметров, но данные из data \PYGZhy{} строки)}
+
+\PYG{+w}{    }\PYG{n}{push!}\PYG{p}{(}\PYG{n}{all\PYGZus{}results}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{result\PYGZus{}summary}\PYG{p}{)}
+
+\PYG{+w}{    }\PYG{n}{df}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DataFrame}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}time\PYGZus{}points\PYGZdq{}}\PYG{p}{],}
+\PYG{+w}{        }\PYG{n}{u}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}population\PYGZus{}values\PYGZdq{}}\PYG{p}{],}
+\PYG{+w}{        }\PYG{n}{α}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{fill}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:α}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{length}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}time\PYGZus{}points\PYGZdq{}}\PYG{p}{]))}
+\PYG{+w}{    }\PYG{p}{)}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Сохраняем полные данные для визуализации}
+\PYG{+w}{    }\PYG{n}{push!}\PYG{p}{(}\PYG{n}{all\PYGZus{}dfs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{df}\PYG{p}{)}
+\PYG{k}{end}
+\end{MintedVerbatim}

@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{estimates}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Float64}\PYG{p}{[]}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Вычисление оценок вероятности...\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{sample\PYGZus{}sizes}
+\PYG{+w}{    }\PYG{n}{hourly\PYGZus{}sample}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{rand}\PYG{p}{(}\PYG{n}{Poisson}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{emp\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{count}\PYG{p}{(}\PYG{n}{hourly\PYGZus{}sample}\PYG{+w}{ }\PYG{o}{.\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{    }\PYG{n}{push!}\PYG{p}{(}\PYG{n}{estimates}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{emp\PYGZus{}prob}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}n = }\PYG{l+s+si}{\PYGZdl{}n}\PYG{l+s}{: оценка = }\PYG{l+s+si}{\PYGZdl{}emp\PYGZus{}prob}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{end}
+\end{MintedVerbatim}

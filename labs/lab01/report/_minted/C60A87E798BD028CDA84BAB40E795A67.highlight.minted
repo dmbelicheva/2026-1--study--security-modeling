@@ -1,0 +1,29 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}=\PYGZdq{}}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{60}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Бенчмаркинг для разных значений α\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=\PYGZdq{}}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{60}\PYG{p}{)}
+\PYG{n}{benchmark\PYGZus{}results}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[]}
+
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{α\PYGZus{}value}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{param\PYGZus{}grid}\PYG{p}{[}\PYG{l+s+ss}{:α}\PYG{p}{]}
+\PYG{+w}{    }\PYG{n}{bench\PYGZus{}params}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{        }\PYG{l+s+ss}{:u0}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{1.0}\PYG{p}{],}
+\PYG{+w}{        }\PYG{l+s+ss}{:α}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{α\PYGZus{}value}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:tspan}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{10.0}\PYG{p}{),}
+\PYG{+w}{        }\PYG{l+s+ss}{:solver}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Tsit5}\PYG{p}{(),}
+\PYG{+w}{        }\PYG{l+s+ss}{:saveat}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.1}
+\PYG{+w}{    }\PYG{p}{)}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Подготавливаем параметры для бенчмарка}
+\PYG{+w}{    }\PYG{k}{function}\PYG{+w}{ }\PYG{n}{benchmark\PYGZus{}run}\PYG{p}{()}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Функция для бенчмарка}
+\PYG{+w}{        }\PYG{n}{prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ODEProblem}\PYG{p}{(}\PYG{n}{exponential\PYGZus{}growth!}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{bench\PYGZus{}params}\PYG{p}{[}\PYG{l+s+ss}{:u0}\PYG{p}{],}
+\PYG{+w}{        }\PYG{n}{bench\PYGZus{}params}\PYG{p}{[}\PYG{l+s+ss}{:tspan}\PYG{p}{],}
+\PYG{+w}{        }\PYG{p}{(}\PYG{n}{α}\PYG{o}{=}\PYG{n}{bench\PYGZus{}params}\PYG{p}{[}\PYG{l+s+ss}{:α}\PYG{p}{],))}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{solve}\PYG{p}{(}\PYG{n}{prob}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{bench\PYGZus{}params}\PYG{p}{[}\PYG{l+s+ss}{:solver}\PYG{p}{];}
+\PYG{+w}{        }\PYG{n}{saveat}\PYG{o}{=}\PYG{n}{bench\PYGZus{}params}\PYG{p}{[}\PYG{l+s+ss}{:saveat}\PYG{p}{])}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Бенчмарк для α = }\PYG{l+s+si}{\PYGZdl{}α\PYGZus{}value}\PYG{l+s}{:\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{b}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nd}{@benchmark}\PYG{+w}{ }\PYG{o}{\PYGZdl{}}\PYG{n}{benchmark\PYGZus{}run}\PYG{p}{()}\PYG{+w}{ }\PYG{n}{samples}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{+w}{ }\PYG{n}{evals}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Запуск бенчмарка}
+\PYG{+w}{    }\PYG{n}{push!}\PYG{p}{(}\PYG{n}{benchmark\PYGZus{}results}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{α}\PYG{o}{=}\PYG{n}{α\PYGZus{}value}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{time}\PYG{o}{=}\PYG{n}{median}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{o}{.}\PYG{n}{time}\PYG{o}{/}\PYG{l+m+mf}{1e9}\PYG{p}{))}\PYG{+w}{ }\PYG{c}{\PYGZsh{} время в секундах}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Среднее время: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{round}\PYG{p}{(}\PYG{n}{median}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{o}{.}\PYG{n}{time}\PYG{o}{/}\PYG{l+m+mf}{1e9}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{digits}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} сек\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{end}
+\end{MintedVerbatim}

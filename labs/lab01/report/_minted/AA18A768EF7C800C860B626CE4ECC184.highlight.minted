@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{function}\PYG{+w}{ }\PYG{n}{run\PYGZus{}single\PYGZus{}experiment}\PYG{p}{(}\PYG{n}{params}\PYG{o}{::}\PYG{k+kt}{Dict}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n+nd}{@unpack}\PYG{+w}{ }\PYG{n}{u0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{α}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tspan}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{solver}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{saveat}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{params}
+\PYG{+w}{    }\PYG{n}{prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ODEProblem}\PYG{p}{(}\PYG{n}{exponential\PYGZus{}growth!}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tspan}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{α}\PYG{o}{=}\PYG{n}{α}\PYG{p}{,))}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Создаем и решаем задачу}
+\PYG{+w}{    }\PYG{n}{sol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{solve}\PYG{p}{(}\PYG{n}{prob}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{solver}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{saveat}\PYG{o}{=}\PYG{n}{saveat}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{final\PYGZus{}population}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{last}\PYG{p}{(}\PYG{n}{sol}\PYG{o}{.}\PYG{n}{u}\PYG{p}{)[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Анализ результатов}
+\PYG{+w}{    }\PYG{n}{doubling\PYGZus{}time}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{log}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{α}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{        }\PYG{l+s}{\PYGZdq{}solution\PYGZdq{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{sol}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s}{\PYGZdq{}time\PYGZus{}points\PYGZdq{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{sol}\PYG{o}{.}\PYG{n}{t}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s}{\PYGZdq{}population\PYGZus{}values\PYGZdq{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{first}\PYG{o}{.}\PYG{p}{(}\PYG{n}{sol}\PYG{o}{.}\PYG{n}{u}\PYG{p}{),}
+\PYG{+w}{        }\PYG{l+s}{\PYGZdq{}final\PYGZus{}population\PYGZdq{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{final\PYGZus{}population}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s}{\PYGZdq{}doubling\PYGZus{}time\PYGZdq{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{doubling\PYGZus{}time}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s}{\PYGZdq{}parameters\PYGZdq{}}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{params}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Сохраняем исходные параметры}
+\PYG{+w}{    }\PYG{p}{)}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Используем строки как ключи для совместимости с DrWatson}
+\PYG{k}{end}
+\end{MintedVerbatim}

@@ -39,8 +39,8 @@ format:
     # sansfont: DejaVu Sans
     # monofont: JuliaMono
     ### minted support
-    # filters:
-    #   - minted-quarto
+    filters:
+      - minted-quarto
     toc: true
     number-sections: true
     colorlinks: false

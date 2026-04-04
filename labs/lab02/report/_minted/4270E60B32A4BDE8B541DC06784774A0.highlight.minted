@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{plot\PYGZus{}path}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}График сохранён в }\PYG{l+s+si}{\PYGZdl{}plot\PYGZus{}path}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

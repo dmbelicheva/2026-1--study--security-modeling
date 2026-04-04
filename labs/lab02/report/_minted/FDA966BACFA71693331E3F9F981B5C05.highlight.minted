@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}sim\PYGZus{}plots.png\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Графики сохранены в \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}sim\PYGZus{}plots.png\PYGZdq{}}\PYG{p}{))}
+\end{MintedVerbatim}

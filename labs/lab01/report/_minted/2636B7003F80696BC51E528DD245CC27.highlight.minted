@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{script\PYGZus{}name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{splitext}\PYG{p}{(}\PYG{n}{basename}\PYG{p}{(}\PYG{n+nb}{PROGRAM\PYGZus{}FILE}\PYG{p}{))[}\PYG{l+m+mi}{1}\PYG{p}{]}
+\PYG{n}{mkpath}\PYG{p}{(}\PYG{n}{plotsdir}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{))}
+\PYG{n}{mkpath}\PYG{p}{(}\PYG{n}{datadir}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{))}
+\end{MintedVerbatim}

@@ -1,0 +1,62 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{summary}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{\PYGZob{}}\PYG{k+kt}{Float64}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{\PYGZcb{}()}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Запуск параметрического исследования...\PYGZdq{}}\PYG{p}{)}
+
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{λ}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{λ\PYGZus{}values}
+\PYG{+w}{    }\PYG{n}{params}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{merge}\PYG{p}{(}\PYG{n}{base\PYGZus{}params}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}\PYG{l+s+ss}{:λ}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{λ}\PYG{p}{))}
+\PYG{+w}{    }\PYG{n}{filename}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}sim\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{savename}\PYG{p}{(}\PYG{n}{params}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}jld2\PYGZdq{}}\PYG{p}{))}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{n}{isfile}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Загрузка существующих данных для λ = }\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{ из }\PYG{l+s+si}{\PYGZdl{}filename}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n+nd}{@load}\PYG{+w}{ }\PYG{n}{filename}\PYG{+w}{ }\PYG{n}{data}
+\PYG{+w}{    }\PYG{k}{else}
+\PYG{+w}{            }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Выполнение симуляции для λ = }\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n}{res}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{simulate\PYGZus{}attacks}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:T}\PYG{p}{])}
+\PYG{+w}{        }\PYG{n}{hourly\PYGZus{}sample}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{rand}\PYG{p}{(}\PYG{n}{Poisson}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:num\PYGZus{}hours\PYGZus{}for\PYGZus{}est}\PYG{p}{])}
+\PYG{+w}{        }\PYG{n}{emp\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{count}\PYG{p}{(}\PYG{n}{hourly\PYGZus{}sample}\PYG{+w}{ }\PYG{o}{.\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:num\PYGZus{}hours\PYGZus{}for\PYGZus{}est}\PYG{p}{]}
+\PYG{+w}{        }\PYG{n}{theor\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{cdf}\PYG{p}{(}\PYG{n}{Poisson}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{            }\PYG{l+s+ss}{:hourly\PYGZus{}counts}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{res}\PYG{o}{.}\PYG{n}{hourly\PYGZus{}counts}\PYG{p}{,}
+\PYG{+w}{            }\PYG{l+s+ss}{:intervals}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{res}\PYG{o}{.}\PYG{n}{intervals}\PYG{p}{,}
+\PYG{+w}{            }\PYG{l+s+ss}{:attack\PYGZus{}times}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{res}\PYG{o}{.}\PYG{n}{attack\PYGZus{}times}\PYG{p}{,}
+\PYG{+w}{            }\PYG{l+s+ss}{:emp\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{emp\PYGZus{}prob}\PYG{p}{,}
+\PYG{+w}{            }\PYG{l+s+ss}{:theor\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{theor\PYGZus{}prob}
+\PYG{+w}{        }\PYG{p}{)}
+\PYG{+w}{        }\PYG{n+nd}{@save}\PYG{+w}{ }\PYG{n}{filename}\PYG{+w}{ }\PYG{n}{data}\PYG{+w}{ }\PYG{n}{params}
+\PYG{+w}{        }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Результаты сохранены в }\PYG{l+s+si}{\PYGZdl{}filename}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{+w}{    }\PYG{n}{hourly\PYGZus{}counts}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:hourly\PYGZus{}counts}\PYG{p}{]}
+\PYG{+w}{    }\PYG{n}{intervals}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:intervals}\PYG{p}{]}
+\PYG{+w}{    }\PYG{n}{attack\PYGZus{}times}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:attack\PYGZus{}times}\PYG{p}{]}
+\PYG{+w}{    }\PYG{n}{p1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{histogram}\PYG{p}{(}\PYG{n}{hourly\PYGZus{}counts}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{bins}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{o}{:}\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{hourly\PYGZus{}counts}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{normalize}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:probability}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Эмпирическая частота\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Число атак за час\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Вероятность\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{x\PYGZus{}vals}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{o}{:}\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{hourly\PYGZus{}counts}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{theor\PYGZus{}probs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{pdf}\PYG{o}{.}\PYG{p}{(}\PYG{n}{Poisson}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{x\PYGZus{}vals}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{plot!}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{x\PYGZus{}vals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theor\PYGZus{}probs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{line}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:stem}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{marker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:circle}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Теоретическое Пуассона(λ=}\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{)\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{title!}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Распределение числа атак за час (λ=}\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{)\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{p2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{attack\PYGZus{}times}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{o}{:}\PYG{n}{length}\PYG{p}{(}\PYG{n}{attack\PYGZus{}times}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}
+\PYG{+w}{    }\PYG{l+s}{\PYGZdq{}Реализация\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Время (ч)\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Накопленное}
+\PYG{l+s}{    число атак\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{+w}{    }\PYG{n}{plot!}\PYG{p}{(}\PYG{n}{p2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{o}{:}\PYG{l+m+mf}{0.1}\PYG{o}{:}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:T}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{λ}\PYG{o}{*}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{o}{:}\PYG{l+m+mf}{0.1}\PYG{o}{:}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:T}\PYG{p}{]),}\PYG{+w}{ }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Среднее λ·t\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ls}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:dash}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{title!}\PYG{p}{(}\PYG{n}{p2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Накопленное число атак в течение }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:T}\PYG{p}{])}\PYG{l+s}{ ч (λ=}\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{)\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{p3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{histogram}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{bins}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{normalize}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:pdf}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Эмпирическая плотность\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Интервал (ч)\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Плотность\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{x\PYGZus{}dens}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{length}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{theor\PYGZus{}dens}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{pdf}\PYG{o}{.}\PYG{p}{(}\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{x\PYGZus{}dens}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{plot!}\PYG{p}{(}\PYG{n}{p3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{x\PYGZus{}dens}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theor\PYGZus{}dens}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Экспоненциальная плотность\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{title!}\PYG{p}{(}\PYG{n}{p3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Распределение интервалов между атаками (λ=}\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{)\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{p4}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{qqplot}\PYG{p}{(}\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{intervals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{qqline}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:identity}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Теоретические квантили\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Эмпирические квантили\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}QQ\PYGZhy{}plot интервалов (λ=}\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{)\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{combined}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{layout}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1000}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{800}\PYG{p}{))}
+\PYG{+w}{    }\PYG{n}{plot\PYGZus{}filename}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{joinpath}\PYG{p}{(}\PYG{n}{parametric\PYGZus{}plots\PYGZus{}dir}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}attack\PYGZus{}sim\PYGZus{}λ=}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{)}\PYG{l+s}{.png\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{combined}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{plot\PYGZus{}filename}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Детальные графики для λ=}\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{ сохранены в }\PYG{l+s+si}{\PYGZdl{}plot\PYGZus{}filename}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{summary}\PYG{p}{[}\PYG{n}{λ}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{    }\PYG{l+s+ss}{:emp\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:emp\PYGZus{}prob}\PYG{p}{],}
+\PYG{+w}{    }\PYG{l+s+ss}{:theor\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:theor\PYGZus{}prob}\PYG{p}{],}
+\PYG{+w}{    }\PYG{l+s+ss}{:filename}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{filename}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}λ = }\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{: теоретическая вероятность = }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:theor\PYGZus{}prob}\PYG{p}{])}\PYG{l+s}{, эмпирическая = }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:emp\PYGZus{}prob}\PYG{p}{])}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{end}
+\end{MintedVerbatim}

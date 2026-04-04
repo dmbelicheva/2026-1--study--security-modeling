@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{p3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{results\PYGZus{}df}\PYG{o}{.}\PYG{n}{α}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{results\PYGZus{}df}\PYG{o}{.}\PYG{n}{doubling\PYGZus{}time}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{seriestype}\PYG{o}{=}\PYG{l+s+ss}{:scatter}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{label}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Численное решение\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Скорость роста, α\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Время удвоения, t₂\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Зависимость времени удвоения от α\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{markersize}\PYG{o}{=}\PYG{l+m+mi}{8}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{markercolor}\PYG{o}{=}\PYG{l+s+ss}{:red}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{legend}\PYG{o}{=}\PYG{l+s+ss}{:topright}
+\PYG{p}{)}
+\end{MintedVerbatim}

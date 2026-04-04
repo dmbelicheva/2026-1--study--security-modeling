@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{p}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{sample\PYGZus{}sizes}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{estimates}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xscale}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:log10}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{marker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:circle}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Эмпирическая оценка\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Объём выборки (часы)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Оценка вероятности P(\PYGZgt{}10)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{legend}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:bottomright}\PYG{p}{)}
+
+\PYG{n}{hline!}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{theor\PYGZus{}prob}\PYG{p}{],}
+\PYG{+w}{    }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Теоретическое значение\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ls}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:dash}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{lw}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{color}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:red}\PYG{p}{)}
+
+\PYG{n}{title!}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Сходимость оценки вероятности P(\PYGZgt{}10) при λ=}\PYG{l+s+si}{\PYGZdl{}λ}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

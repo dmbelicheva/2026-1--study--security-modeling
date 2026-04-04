@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Distributions}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{StatsPlots}
+
+\PYG{c}{\PYGZsh{} Получаем интервалы между событиями}
+\PYG{n}{intervals}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{diff}\PYG{p}{(}\PYG{n}{events}\PYG{p}{)}
+
+\PYG{c}{\PYGZsh{} Теоретические квантили экспоненциального распределения}
+\PYG{n}{λ\PYGZus{}hat}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{mean}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{)}\PYG{+w}{  }\PYG{c}{\PYGZsh{} оценка параметра}
+\PYG{n}{theoretical}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{quantile}\PYG{o}{.}\PYG{p}{(}\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{λ\PYGZus{}hat}\PYG{p}{),}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{:}\PYG{n}{length}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{))}\PYG{o}{/}\PYG{p}{(}\PYG{n}{length}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{)}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{))}
+
+\PYG{c}{\PYGZsh{} QQ\PYGZhy{}plot}
+\PYG{n}{scatter}\PYG{p}{(}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{theoretical}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{xlabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Эмпирические квантили\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Теоретические квантили\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{title}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}QQ\PYGZhy{}plot для экспоненциального распределения\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plot!}\PYG{p}{([}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{)],}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{)],}\PYG{+w}{ }\PYG{n}{line}\PYG{o}{=}\PYG{l+s+ss}{:dash}\PYG{p}{)}\PYG{+w}{  }\PYG{c}{\PYGZsh{} диагональ}
+\end{MintedVerbatim}

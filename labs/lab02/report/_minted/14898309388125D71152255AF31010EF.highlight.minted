@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{HypothesisTests}
+
+\PYG{c}{\PYGZsh{} Оцениваем параметр λ}
+\PYG{n}{λ\PYGZus{}est}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{mean}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{)}
+
+\PYG{c}{\PYGZsh{} Тест Колмогорова\PYGZhy{}Смирнова}
+\PYG{n}{ks\PYGZus{}test}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ExactOneSampleKSTest}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{λ\PYGZus{}est}\PYG{p}{))}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}p\PYGZhy{}value = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pvalue}\PYG{p}{(}\PYG{n}{ks\PYGZus{}test}\PYG{p}{))}
+\end{MintedVerbatim}

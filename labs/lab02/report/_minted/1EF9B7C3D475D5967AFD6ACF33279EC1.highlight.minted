@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{p4}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{qqplot}\PYG{p}{(}\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{intervals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{qqline}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:identity}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Теоретические квантили\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Эмпирические квантили\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}QQ\PYGZhy{}plot интервалов\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

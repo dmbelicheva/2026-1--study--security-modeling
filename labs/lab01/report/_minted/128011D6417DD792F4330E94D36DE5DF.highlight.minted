@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{data}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{path}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{produce\PYGZus{}or\PYGZus{}load}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{datadir}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}single\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Папка для сохранения}
+\PYG{+w}{    }\PYG{n}{base\PYGZus{}params}\PYG{p}{,}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Параметры эксперимента}
+\PYG{+w}{    }\PYG{n}{run\PYGZus{}single\PYGZus{}experiment}\PYG{p}{,}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Функция для выполнения}
+\PYG{+w}{    }\PYG{n}{prefix}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}exp\PYGZus{}growth\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Префикс имени файла}
+\PYG{+w}{    }\PYG{n}{tag}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{p}{,}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Не добавлять git\PYGZhy{}тег}
+\PYG{+w}{    }\PYG{n}{verbose}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{true}
+\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Результаты базового эксперимента:\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Финальная популяция: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}final\PYGZus{}population\PYGZdq{}}\PYG{p}{])}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Время удвоения: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{round}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}doubling\PYGZus{}time\PYGZdq{}}\PYG{p}{];}\PYG{+w}{ }\PYG{n}{digits}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{))}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Файл результатов: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{path}\PYG{p}{)}
+\end{MintedVerbatim}

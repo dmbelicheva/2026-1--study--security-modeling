@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DrWatson}
+\PYG{n+nd}{@quickactivate}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}project\PYGZdq{}}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Активация проекта DrWatson}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DifferentialEquations}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DataFrames}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Plots}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{JLD2}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{BenchmarkTools}
+\end{MintedVerbatim}

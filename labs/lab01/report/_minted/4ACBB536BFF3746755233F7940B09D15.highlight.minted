@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DrWatson}
+\PYG{n+nd}{@quickactivate}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}project\PYGZdq{}}
+
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DifferentialEquations}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Plots}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DataFrames}
+\end{MintedVerbatim}

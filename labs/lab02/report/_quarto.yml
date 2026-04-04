@@ -6,9 +6,9 @@ standalone: true
 self-contained: true
 
 ## Julia support
-# engine: julia
-# julia:
-#   exeflags: ["--project=../project"]
+engines: ['julia']
+julia:
+  exeflags: ["--project=../project"]
 
 ## Generic options
 lang: ru-RU
@@ -34,24 +34,27 @@ format:
     toc-depth: 2
   ### Pdf output format
   pdf:
-    # pdf-engine: xelatex
+    # pdf-engine: lualatex
+    # mainfont: DejaVu Serif
+    # sansfont: DejaVu Sans
+    # monofont: JuliaMono
     ### minted support
-    # filters:
-    #   - minted-quarto
+    filters:
+      - minted-quarto
     toc: true
     number-sections: true
     colorlinks: false
     toc-depth: 2
     lof: true # List of figures
-    lot: true # List of tables
+    lot: false # List of tables
     #### Document
     documentclass: scrreprt
     papersize: a4
     fontsize: 12pt
     linestretch: 1.5
     #### Language
-    babel-lang: russian
-    babel-otherlangs: english
+    # babel-lang: russian
+    # babel-otherlangs: english
     #### Biblatex
     cite-method: biblatex
     biblio-style: gost-numeric

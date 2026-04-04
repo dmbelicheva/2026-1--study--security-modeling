@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Эмпирическая вероятность P(\PYGZgt{}10) = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{emp\PYGZus{}prob}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Теоретическая вероятность = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theor\PYGZus{}prob}\PYG{p}{)}
+\end{MintedVerbatim}

@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{summary\PYGZus{}filename}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}parameter\PYGZus{}sweep\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}summary\PYGZus{}λ\PYGZus{}values.jld2\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nd}{@save}\PYG{+w}{ }\PYG{n}{summary\PYGZus{}filename}\PYG{+w}{ }\PYG{n}{λ\PYGZus{}values}\PYG{+w}{ }\PYG{n}{summary}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Сводные данные сохранены в }\PYG{l+s+si}{\PYGZdl{}summary\PYGZus{}filename}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

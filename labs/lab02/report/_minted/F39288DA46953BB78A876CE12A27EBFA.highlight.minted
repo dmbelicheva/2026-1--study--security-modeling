@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{p3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{histogram}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{bins}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{normalize}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:pdf}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Эмпирическая плотность\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Интервал (ч)\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Плотность\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{x\PYGZus{}dens}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{length}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{)}
+\PYG{n}{theor\PYGZus{}dens}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{pdf}\PYG{o}{.}\PYG{p}{(}\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{x\PYGZus{}dens}\PYG{p}{)}
+\PYG{n}{plot!}\PYG{p}{(}\PYG{n}{p3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{x\PYGZus{}dens}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theor\PYGZus{}dens}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Экспоненциальная плотность\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{title!}\PYG{p}{(}\PYG{n}{p3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Распределение интервалов между атаками\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

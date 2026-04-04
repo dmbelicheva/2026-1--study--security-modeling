@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{α\PYGZus{}range}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{o}{:}\PYG{l+m+mf}{0.01}\PYG{o}{:}\PYG{l+m+mf}{1.0}
+\PYG{n}{plot!}\PYG{p}{(}\PYG{n}{p3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{α\PYGZus{}range}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{log}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{./}\PYG{+w}{ }\PYG{n}{α\PYGZus{}range}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{label}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Теория: t₂ = ln(2)/α\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{linestyle}\PYG{o}{=}\PYG{l+s+ss}{:dash}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{linecolor}\PYG{o}{=}\PYG{l+s+ss}{:blue}
+\PYG{p}{)}
+\end{MintedVerbatim}

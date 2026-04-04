@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{histogram}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{normalize}\PYG{o}{=}\PYG{l+s+ss}{:pdf}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{30}\PYG{p}{,}
+\PYG{+w}{          }\PYG{n}{label}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Эмпирическая плотность\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{          }\PYG{n}{xlabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Интервал\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Плотность\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{x}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{length}\PYG{o}{=}\PYG{l+m+mi}{100}\PYG{p}{)}
+\PYG{n}{plot!}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pdf}\PYG{o}{.}\PYG{p}{(}\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{λ\PYGZus{}hat}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{),}
+\PYG{+w}{      }\PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{label}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Теоретическая плотность Exp(}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{round}\PYG{p}{(}\PYG{n}{λ\PYGZus{}hat}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{digits}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{))}\PYG{l+s}{)\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

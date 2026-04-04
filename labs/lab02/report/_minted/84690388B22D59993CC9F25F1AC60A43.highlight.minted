@@ -1,0 +1,15 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{λs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{λ}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{λ}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{λ\PYGZus{}values}\PYG{p}{]}
+\PYG{n}{theor\PYGZus{}probs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{summary}\PYG{p}{[}\PYG{n}{λ}\PYG{p}{][}\PYG{l+s+ss}{:theor\PYGZus{}prob}\PYG{p}{]}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{λ}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{λs}\PYG{p}{]}
+\PYG{n}{emp\PYGZus{}probs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{summary}\PYG{p}{[}\PYG{n}{λ}\PYG{p}{][}\PYG{l+s+ss}{:emp\PYGZus{}prob}\PYG{p}{]}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{λ}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{λs}\PYG{p}{]}
+\PYG{n}{p}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{λs}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{theor\PYGZus{}probs}\PYG{+w}{ }\PYG{n}{emp\PYGZus{}probs}\PYG{p}{],}
+\PYG{+w}{    }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Теоретическая P(\PYGZgt{}10)\PYGZdq{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Эмпирическая P(\PYGZgt{}10)\PYGZdq{}}\PYG{p}{],}
+\PYG{+w}{    }\PYG{n}{marker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:circle}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Интенсивность λ (атак/час)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Вероятность P(\PYGZgt{}10)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Зависимость вероятности от интенсивности атак\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{global\PYGZus{}plot\PYGZus{}path}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}parameter\PYGZus{}sweep.png\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{global\PYGZus{}plot\PYGZus{}path}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Общий график зависимости сохранён в }\PYG{l+s+si}{\PYGZdl{}global\PYGZus{}plot\PYGZus{}path}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

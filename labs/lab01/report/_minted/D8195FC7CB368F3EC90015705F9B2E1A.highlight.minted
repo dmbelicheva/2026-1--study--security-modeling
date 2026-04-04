@@ -1,0 +1,23 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{p2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{size}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{800}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{500}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{dpi}\PYG{o}{=}\PYG{l+m+mi}{150}\PYG{p}{)}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{params}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{all\PYGZus{}params}
+\PYG{+w}{    }\PYG{n}{data}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{produce\PYGZus{}or\PYGZus{}load}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{datadir}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}parametric\PYGZus{}scan\PYGZdq{}}\PYG{p}{),}
+\PYG{+w}{        }\PYG{n}{params}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{run\PYGZus{}single\PYGZus{}experiment}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{prefix}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}scan\PYGZdq{}}
+\PYG{+w}{    }\PYG{p}{)}\PYG{+w}{ }\PYG{c}{\PYGZsh{} Загружаем данные (они уже есть на диске)}
+\PYG{+w}{    }\PYG{n}{plot!}\PYG{p}{(}\PYG{n}{p2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}time\PYGZus{}points\PYGZdq{}}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}population\PYGZus{}values\PYGZdq{}}\PYG{p}{],}
+\PYG{+w}{        }\PYG{n}{label}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}α = }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:α}\PYG{p}{])}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{alpha}\PYG{o}{=}\PYG{l+m+mf}{0.8}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{k}{end}
+\PYG{n}{plot!}\PYG{p}{(}\PYG{n}{p2}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Время, t\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Популяция, u(t)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Параметрическое исследование: влияние α на рост\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{legend}\PYG{o}{=}\PYG{l+s+ss}{:topleft}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{grid}\PYG{o}{=}\PYG{n+nb}{true}
+\PYG{p}{)}
+\end{MintedVerbatim}

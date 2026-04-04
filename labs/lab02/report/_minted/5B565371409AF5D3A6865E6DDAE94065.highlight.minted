@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{λ}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{5.0}
+\PYG{n}{theor\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{cdf}\PYG{p}{(}\PYG{n}{Poisson}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{)}
+\end{MintedVerbatim}

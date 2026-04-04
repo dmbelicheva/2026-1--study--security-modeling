@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{df}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{t}\PYG{o}{=}\PYG{n}{sol}\PYG{o}{.}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{=}\PYG{n}{first}\PYG{o}{.}\PYG{p}{(}\PYG{n}{sol}\PYG{o}{.}\PYG{n}{u}\PYG{p}{))}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Первые 5 строк результатов:\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{n}{first}\PYG{p}{(}\PYG{n}{df}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{))}
+\end{MintedVerbatim}

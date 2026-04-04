@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{results\PYGZus{}df}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{all\PYGZus{}results}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Сводная таблица результатов:\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{n}{results\PYGZus{}df}\PYG{p}{[}\PYG{o}{!}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{l+s+ss}{:α}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+ss}{:final\PYGZus{}population}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+ss}{:doubling\PYGZus{}time}\PYG{p}{]])}
+\end{MintedVerbatim}

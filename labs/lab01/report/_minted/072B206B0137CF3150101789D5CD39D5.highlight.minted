@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{p1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}time\PYGZus{}points\PYGZdq{}}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}population\PYGZus{}values\PYGZdq{}}\PYG{p}{],}
+\PYG{+w}{    }\PYG{n}{label}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}α = }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{base\PYGZus{}params}\PYG{p}{[}\PYG{l+s+ss}{:α}\PYG{p}{])}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Время, t\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Популяция, u(t)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Экспоненциальный рост (базовый эксперимент)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{legend}\PYG{o}{=}\PYG{l+s+ss}{:topleft}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{grid}\PYG{o}{=}\PYG{n+nb}{true}
+\PYG{p}{)}
+\end{MintedVerbatim}

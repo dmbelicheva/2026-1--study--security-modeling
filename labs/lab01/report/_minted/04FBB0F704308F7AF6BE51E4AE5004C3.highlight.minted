@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{all\PYGZus{}params}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dict\PYGZus{}list}\PYG{p}{(}\PYG{n}{param\PYGZus{}grid}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}=\PYGZdq{}}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{60}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ПАРАМЕТРИЧЕСКОЕ СКАНИРОВАНИЕ\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Всего комбинаций параметров: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{length}\PYG{p}{(}\PYG{n}{all\PYGZus{}params}\PYG{p}{))}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Исследуемые значения α: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{param\PYGZus{}grid}\PYG{p}{[}\PYG{l+s+ss}{:α}\PYG{p}{])}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=\PYGZdq{}}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{60}\PYG{p}{)}
+\end{MintedVerbatim}

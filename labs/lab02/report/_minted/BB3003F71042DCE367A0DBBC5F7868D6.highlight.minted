@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{data\PYGZus{}path}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}convergence\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}convergence\PYGZus{}data\PYGZus{}λ=}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{)}\PYG{l+s}{.jld2\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{mkpath}\PYG{p}{(}\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}convergence\PYGZdq{}}\PYG{p}{))}
+\PYG{n+nd}{@save}\PYG{+w}{ }\PYG{n}{data\PYGZus{}path}\PYG{+w}{ }\PYG{n}{sample\PYGZus{}sizes}\PYG{+w}{ }\PYG{n}{estimates}\PYG{+w}{ }\PYG{n}{λ}\PYG{+w}{ }\PYG{n}{theor\PYGZus{}prob}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Данные сходимости сохранены в }\PYG{l+s+si}{\PYGZdl{}data\PYGZus{}path}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

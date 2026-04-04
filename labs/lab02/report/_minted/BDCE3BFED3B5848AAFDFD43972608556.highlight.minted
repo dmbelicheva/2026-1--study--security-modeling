@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DrWatson}
+
+\PYG{k}{function}\PYG{+w}{ }\PYG{n}{my\PYGZus{}simulation}\PYG{p}{(}\PYG{n}{params}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c}{\PYGZsh{} Дорогие вычисления}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{result}
+\PYG{k}{end}
+
+\PYG{c}{\PYGZsh{} Первый запуск — выполнит и сохранит}
+\PYG{n}{result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{produce\PYGZus{}or\PYGZus{}load}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}simulation\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{my\PYGZus{}simulation}\PYG{p}{)}
+
+\PYG{c}{\PYGZsh{} Второй запуск с теми же params — загрузит из кэша}
+\PYG{n}{result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{produce\PYGZus{}or\PYGZus{}load}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}simulation\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{my\PYGZus{}simulation}\PYG{p}{)}
+\end{MintedVerbatim}

@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n+nd}{@save}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}all\PYGZus{}results.jld2\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{base\PYGZus{}params}\PYG{+w}{ }\PYG{n}{param\PYGZus{}grid}\PYG{+w}{ }\PYG{n}{all\PYGZus{}params}\PYG{+w}{ }\PYG{n}{results\PYGZus{}df}\PYG{+w}{ }\PYG{n}{bench\PYGZus{}df}
+\PYG{n+nd}{@save}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}all\PYGZus{}plots.jld2\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{p1}\PYG{+w}{ }\PYG{n}{p2}\PYG{+w}{ }\PYG{n}{p3}\PYG{+w}{ }\PYG{n}{p4}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}=\PYGZdq{}}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{60}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ЛАБОРАТОРНАЯ РАБОТА ЗАВЕРШЕНА\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=\PYGZdq{}}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{60}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Результаты сохранены в:\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} • data/}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{)}\PYG{l+s}{/single/ \PYGZhy{} базовый эксперимент\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} • data/}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{)}\PYG{l+s}{/parametric\PYGZus{}scan/ \PYGZhy{} параметрическое сканирование\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} • data/}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{)}\PYG{l+s}{/all\PYGZus{}results.jld2 \PYGZhy{} сводные данные\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} • plots/}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{)}\PYG{l+s}{/ \PYGZhy{} все графики\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} • data/}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{)}\PYG{l+s}{/all\PYGZus{}plots.jld2 \PYGZhy{} объекты графиков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Для анализа результатов используйте:\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} using JLD2, DataFrames\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} @load }\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s}{data/}\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{script\PYGZus{}name}\PYG{p}{)}\PYG{l+s}{/all\PYGZus{}results.jld2}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} println(results\PYGZus{}df)\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

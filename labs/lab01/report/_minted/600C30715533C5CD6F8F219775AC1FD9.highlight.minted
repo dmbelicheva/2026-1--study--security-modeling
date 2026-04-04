@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{param\PYGZus{}grid}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{    }\PYG{l+s+ss}{:u0}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[[}\PYG{l+m+mf}{1.0}\PYG{p}{]],}\PYG{+w}{ }\PYG{c}{\PYGZsh{} фиксируем начальное условие}
+\PYG{+w}{    }\PYG{l+s+ss}{:α}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{0.1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.8}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{1.0}\PYG{p}{],}\PYG{+w}{ }\PYG{c}{\PYGZsh{} исследуемые значения скорости роста}
+\PYG{+w}{    }\PYG{l+s+ss}{:tspan}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[(}\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{10.0}\PYG{p}{)],}\PYG{+w}{ }\PYG{c}{\PYGZsh{} фиксируем интервал времени}
+\PYG{+w}{    }\PYG{l+s+ss}{:solver}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{Tsit5}\PYG{p}{()],}\PYG{+w}{ }\PYG{c}{\PYGZsh{} фиксируем метод решения}
+\PYG{+w}{    }\PYG{l+s+ss}{:saveat}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{0.1}\PYG{p}{],}\PYG{+w}{ }\PYG{c}{\PYGZsh{} фиксируем шаг сохранения}
+\PYG{+w}{    }\PYG{l+s+ss}{:experiment\PYGZus{}name}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[}\PYG{l+s}{\PYGZdq{}parametric\PYGZus{}scan\PYGZdq{}}\PYG{p}{]}
+\PYG{p}{)}
+\end{MintedVerbatim}

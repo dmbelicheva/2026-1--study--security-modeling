@@ -1,0 +1,24 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Distributions}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{HypothesisTests}
+
+\PYG{c}{\PYGZsh{} Генерация на интервале [0, T]}
+\PYG{k}{function}\PYG{+w}{ }\PYG{n}{generate\PYGZus{}poisson}\PYG{p}{(}\PYG{n}{λ}\PYG{o}{::}\PYG{k+kt}{Float64}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T}\PYG{o}{::}\PYG{k+kt}{Float64}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{intervals}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[]}
+\PYG{+w}{    }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.0}
+\PYG{+w}{    }\PYG{k}{while}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{T}
+\PYG{+w}{        }\PYG{n}{τ}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{rand}\PYG{p}{(}\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{λ}\PYG{p}{))}
+\PYG{+w}{        }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{n}{τ}
+\PYG{+w}{        }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{T}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{push!}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{intervals}
+\PYG{k}{end}
+
+\PYG{c}{\PYGZsh{} Проверка экспоненциальности}
+\PYG{k}{function}\PYG{+w}{ }\PYG{n}{check\PYGZus{}exponential}\PYG{p}{(}\PYG{n}{intervals}\PYG{p}{)}
+\PYG{+w}{    }\PYG{c}{\PYGZsh{} Интервалы между событиями}
+\PYG{+w}{    }\PYG{n}{diffs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{diff}\PYG{p}{([}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{intervals}\PYG{p}{])}
+\PYG{+w}{    }\PYG{c}{\PYGZsh{} Тест Андерсона\PYGZhy{}Дарлинга}
+\PYG{+w}{    }\PYG{n}{test}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ExactOneSampleKSTest}\PYG{p}{(}\PYG{n}{diffs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Exponential}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{diffs}\PYG{p}{)))}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{pvalue}\PYG{p}{(}\PYG{n}{test}\PYG{p}{)}
+\PYG{k}{end}
+\end{MintedVerbatim}

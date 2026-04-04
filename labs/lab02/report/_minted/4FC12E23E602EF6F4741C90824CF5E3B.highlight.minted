@@ -1,0 +1,30 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DrWatson}
+\PYG{n+nd}{@quickactivate}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}project\PYGZdq{}}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Distributions}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Statistics}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{JLD2}
+
+\PYG{n}{include}\PYG{p}{(}\PYG{n}{srcdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}simulation.jl\PYGZdq{}}\PYG{p}{))}
+
+\PYG{n}{params}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{    }\PYG{l+s+ss}{:λ}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{5.0}\PYG{p}{,}
+\PYG{+w}{    }\PYG{l+s+ss}{:T}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{24.0}\PYG{p}{,}
+\PYG{+w}{    }\PYG{l+s+ss}{:num\PYGZus{}hours\PYGZus{}for\PYGZus{}est}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{10000}
+\PYG{p}{)}
+
+\PYG{k}{function}\PYG{+w}{ }\PYG{n}{run\PYGZus{}simulation}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n+nd}{@unpack}\PYG{+w}{ }\PYG{n}{λ}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{num\PYGZus{}hours\PYGZus{}for\PYGZus{}est}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{p}
+\PYG{+w}{    }\PYG{n}{res}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{simulate\PYGZus{}attacks}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{hourly\PYGZus{}sample}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{rand}\PYG{p}{(}\PYG{n}{Poisson}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{num\PYGZus{}hours\PYGZus{}for\PYGZus{}est}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{emp\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{count}\PYG{p}{(}\PYG{n}{hourly\PYGZus{}sample}\PYG{+w}{ }\PYG{o}{.\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{num\PYGZus{}hours\PYGZus{}for\PYGZus{}est}
+\PYG{+w}{    }\PYG{n}{theor\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{cdf}\PYG{p}{(}\PYG{n}{Poisson}\PYG{p}{(}\PYG{n}{λ}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{        }\PYG{l+s+ss}{:hourly\PYGZus{}counts}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{res}\PYG{o}{.}\PYG{n}{hourly\PYGZus{}counts}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:intervals}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{res}\PYG{o}{.}\PYG{n}{intervals}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:attack\PYGZus{}times}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{res}\PYG{o}{.}\PYG{n}{attack\PYGZus{}times}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:emp\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{emp\PYGZus{}prob}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:theor\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{theor\PYGZus{}prob}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{k}{end}
+\end{MintedVerbatim}
