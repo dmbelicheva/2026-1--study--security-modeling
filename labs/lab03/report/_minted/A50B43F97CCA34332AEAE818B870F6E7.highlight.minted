@@ -1,0 +1,47 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DrWatson}
+\PYG{n+nd}{@quickactivate}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}project\PYGZdq{}}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Graphs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{JLD2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Random}
+
+\PYG{n}{include}\PYG{p}{(}\PYG{n}{srcdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph.jl\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{params}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{    }\PYG{l+s+ss}{:n}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{,}
+\PYG{+w}{    }\PYG{l+s+ss}{:edge\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.2}\PYG{p}{,}
+\PYG{+w}{    }\PYG{l+s+ss}{:source}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}
+\PYG{+w}{    }\PYG{l+s+ss}{:target}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{,}
+\PYG{+w}{    }\PYG{l+s+ss}{:cvss\PYGZus{}scores}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{((}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.9}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.7}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{8}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{    }\PYG{l+m+mf}{0.8}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.95}\PYG{p}{),}
+\PYG{+w}{    }\PYG{l+s+ss}{:trust\PYGZus{}relations}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{p}{),}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{),}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{15}\PYG{p}{)],}
+\PYG{p}{)}
+
+\PYG{n}{filename}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{savename}\PYG{p}{(}\PYG{n}{params}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}jld2\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{mkpath}\PYG{p}{(}\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph\PYGZdq{}}\PYG{p}{))}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n}{isfile}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n+nd}{@load}\PYG{+w}{ }\PYG{n}{filename}\PYG{+w}{ }\PYG{n}{data}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Данные загружены из }\PYG{l+s+si}{\PYGZdl{}filename}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{else}
+\PYG{+w}{    }\PYG{n}{g}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{build\PYGZus{}attack\PYGZus{}graph}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:n}\PYG{p}{],}
+\PYG{+w}{        }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:edge\PYGZus{}prob}\PYG{p}{],}
+\PYG{+w}{        }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:cvss\PYGZus{}scores}\PYG{p}{],}
+\PYG{+w}{        }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:trust\PYGZus{}relations}\PYG{p}{],}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{paths}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{find\PYGZus{}all\PYGZus{}paths}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:source}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:target}\PYG{p}{])}
+\PYG{+w}{    }\PYG{n}{metrics}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{compute\PYGZus{}centrality\PYGZus{}metrics}\PYG{p}{(}\PYG{n}{g}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{weights}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{assign\PYGZus{}edge\PYGZus{}weights}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:cvss\PYGZus{}scores}\PYG{p}{])}
+\PYG{+w}{    }\PYG{n}{likely\PYGZus{}path}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prob}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{most\PYGZus{}likely\PYGZus{}path}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:source}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:target}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{weights}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}
+\PYG{+w}{        }\PYG{l+s+ss}{:graph}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{g}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:paths}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{paths}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:metrics}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{metrics}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:weights}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{weights}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:likely\PYGZus{}path}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{likely\PYGZus{}path}\PYG{p}{,}
+\PYG{+w}{        }\PYG{l+s+ss}{:probability}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{prob}\PYG{p}{,}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{+w}{    }\PYG{n+nd}{@save}\PYG{+w}{ }\PYG{n}{filename}\PYG{+w}{ }\PYG{n}{data}\PYG{+w}{ }\PYG{n}{params}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Результаты сохранены в }\PYG{l+s+si}{\PYGZdl{}filename}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{end}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Количество путей атаки: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{length}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:paths}\PYG{p}{]))}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Наиболее вероятный путь: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:likely\PYGZus{}path}\PYG{p}{])}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Вероятность успеха: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:probability}\PYG{p}{])}
+\end{MintedVerbatim}

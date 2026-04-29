@@ -1,0 +1,61 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DrWatson}
+\PYG{n+nd}{@quickactivate}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}project\PYGZdq{}}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Graphs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{JLD2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Plots}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{GraphRecipes}
+
+\PYG{n}{include}\PYG{p}{(}\PYG{n}{srcdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph.jl\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{params}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}\PYG{l+s+ss}{:n}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+ss}{:edge\PYGZus{}prob}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mf}{0.2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+ss}{:source}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+ss}{:target}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{)}
+\PYG{n}{filename}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{savename}\PYG{p}{(}\PYG{n}{params}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}jld2\PYGZdq{}}\PYG{p}{))}
+\PYG{n+nd}{@load}\PYG{+w}{ }\PYG{n}{filename}\PYG{+w}{ }\PYG{n}{data}
+
+\PYG{n}{g}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:graph}\PYG{p}{]}
+\PYG{n}{metrics}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:metrics}\PYG{p}{]}
+\PYG{n}{pagerank}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{metrics}\PYG{p}{[}\PYG{l+s+ss}{:pagerank}\PYG{p}{]}
+
+\PYG{n}{norm\PYGZus{}rank}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{pagerank}\PYG{+w}{ }\PYG{o}{.\PYGZhy{}}\PYG{+w}{ }\PYG{n}{minimum}\PYG{p}{(}\PYG{n}{pagerank}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{./}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{pagerank}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}
+\PYG{+w}{    }\PYG{n}{minimum}\PYG{p}{(}\PYG{n}{pagerank}\PYG{p}{))}
+\PYG{n}{colors}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{cgrad}\PYG{p}{(}\PYG{l+s+ss}{:RdYlGn}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rev}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{true}\PYG{p}{)[}\PYG{n}{norm\PYGZus{}rank}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{o}{:}\PYG{n}{nv}\PYG{p}{(}\PYG{n}{g}\PYG{p}{)]}
+
+\PYG{n}{graphplot}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{g}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{nodeshape}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:circle}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{curves}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{linecolor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:black}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{nodecolor}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{colors}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{nodelabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{o}{:}\PYG{n}{nv}\PYG{p}{(}\PYG{n}{g}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Граф атак (цвет = PageRank)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{800}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{600}\PYG{p}{),}
+\PYG{p}{)}
+
+\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph.png\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}График сохранён в \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph.png\PYGZdq{}}\PYG{p}{))}
+
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== Анализ графа атак ===\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Количество узлов: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{nv}\PYG{p}{(}\PYG{n}{g}\PYG{p}{))}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Количество рёбер: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ne}\PYG{p}{(}\PYG{n}{g}\PYG{p}{))}
+\PYG{n}{println}\PYG{p}{(}
+\PYG{+w}{    }\PYG{l+s}{\PYGZdq{}Количество путей от \PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:source}\PYG{p}{],}
+\PYG{+w}{    }\PYG{l+s}{\PYGZdq{} к \PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{params}\PYG{p}{[}\PYG{l+s+ss}{:target}\PYG{p}{],}
+\PYG{+w}{    }\PYG{l+s}{\PYGZdq{}: \PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{length}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:paths}\PYG{p}{]),}
+\PYG{p}{)}
+\PYG{k}{if}\PYG{+w}{ }\PYG{o}{!}\PYG{n}{isempty}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:paths}\PYG{p}{])}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Длины путей: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{length}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{p}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:paths}\PYG{p}{]])}
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Наиболее вероятный путь: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{data}\PYG{p}{[}\PYG{l+s+ss}{:likely\PYGZus{}path}\PYG{p}{])}
+\PYG{k}{end}
+
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Топ\PYGZhy{}5 узлов по in\PYGZhy{}degree:\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{top\PYGZus{}indeg}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{sortperm}\PYG{p}{(}\PYG{n}{metrics}\PYG{p}{[}\PYG{l+s+ss}{:in\PYGZus{}degree}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{rev}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{true}\PYG{p}{)[}\PYG{l+m+mi}{1}\PYG{o}{:}\PYG{l+m+mi}{5}\PYG{p}{]}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{top\PYGZus{}indeg}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Узел }\PYG{l+s+si}{\PYGZdl{}i}\PYG{l+s}{: in\PYGZhy{}degree = }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{metrics}\PYG{p}{[}\PYG{l+s+ss}{:in\PYGZus{}degree}\PYG{p}{][}\PYG{n}{i}\PYG{p}{])}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{end}
+
+\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{Топ\PYGZhy{}5 узлов по PageRank:\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{top\PYGZus{}pr}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{sortperm}\PYG{p}{(}\PYG{n}{metrics}\PYG{p}{[}\PYG{l+s+ss}{:pagerank}\PYG{p}{],}\PYG{+w}{ }\PYG{n}{rev}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{true}\PYG{p}{)[}\PYG{l+m+mi}{1}\PYG{o}{:}\PYG{l+m+mi}{5}\PYG{p}{]}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{top\PYGZus{}pr}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Узел }\PYG{l+s+si}{\PYGZdl{}i}\PYG{l+s}{: PageRank = }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{round}\PYG{p}{(}\PYG{n}{metrics}\PYG{p}{[}\PYG{l+s+ss}{:pagerank}\PYG{p}{][}\PYG{n}{i}\PYG{p}{],}
+\PYG{+w}{        }\PYG{n}{digits}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{))}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{end}
+\end{MintedVerbatim}

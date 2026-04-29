@@ -1,0 +1,52 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DrWatson}
+\PYG{n+nd}{@quickactivate}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}project\PYGZdq{}}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Graphs}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Random}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CSV}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{DataFrames}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Plots}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{StatsBase}
+
+\PYG{n}{include}\PYG{p}{(}\PYG{n}{srcdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph.jl\PYGZdq{}}\PYG{p}{))}
+
+\PYG{n}{edge\PYGZus{}probs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{o}{:}\PYG{l+m+mf}{0.1}\PYG{o}{:}\PYG{l+m+mf}{0.9}
+\PYG{n}{n\PYGZus{}nodes}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{13}
+\PYG{n}{source}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}
+\PYG{n}{target}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{n\PYGZus{}nodes}
+\PYG{n}{results}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[]}
+\PYG{n}{Random}\PYG{o}{.}\PYG{n}{seed!}\PYG{p}{(}\PYG{l+m+mi}{123}\PYG{p}{)}
+
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{p}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{edge\PYGZus{}probs}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Плотность рёбер: }\PYG{l+s+si}{\PYGZdl{}p}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{g}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{build\PYGZus{}attack\PYGZus{}graph}\PYG{p}{(}\PYG{n}{n\PYGZus{}nodes}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(),}\PYG{+w}{ }\PYG{p}{[])}
+\PYG{+w}{    }\PYG{n}{paths}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{find\PYGZus{}all\PYGZus{}paths}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{source}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{target}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{metrics}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{compute\PYGZus{}centrality\PYGZus{}metrics}\PYG{p}{(}\PYG{n}{g}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{max\PYGZus{}indeg}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{maximum}\PYG{p}{(}\PYG{n}{metrics}\PYG{p}{[}\PYG{l+s+ss}{:in\PYGZus{}degree}\PYG{p}{])}
+\PYG{+w}{    }\PYG{n}{avg\PYGZus{}path\PYGZus{}len}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{isempty}\PYG{p}{(}\PYG{n}{paths}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{mean}\PYG{p}{(}\PYG{n}{length}\PYG{o}{.}\PYG{p}{(}\PYG{n}{paths}\PYG{p}{))}
+\PYG{+w}{    }\PYG{n}{push!}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{results}\PYG{p}{,}
+\PYG{+w}{    }\PYG{p}{(}\PYG{n}{p}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{paths}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{length}\PYG{p}{(}\PYG{n}{paths}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{max\PYGZus{}indeg}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{max\PYGZus{}indeg}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{avg\PYGZus{}len}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{avg\PYGZus{}path\PYGZus{}len}\PYG{p}{),}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{k}{end}
+
+\PYG{n}{df}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{results}\PYG{p}{)}
+\PYG{n}{CSV}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}parameter\PYGZus{}sweep\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}results.csv\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{df}\PYG{p}{)}
+
+\PYG{n}{p1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{edge\PYGZus{}probs}\PYG{p}{,}
+\PYG{+w}{    }\PYG{p}{[}\PYG{n}{r}\PYG{o}{.}\PYG{n}{paths}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{r}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{results}\PYG{p}{],}
+\PYG{+w}{    }\PYG{n}{marker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:circle}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Плотность рёбер\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Количество путей\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Пути\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{)}
+
+\PYG{n}{p2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{edge\PYGZus{}probs}\PYG{p}{,}
+\PYG{+w}{    }\PYG{p}{[}\PYG{n}{r}\PYG{o}{.}\PYG{n}{avg\PYGZus{}len}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{r}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{results}\PYG{p}{],}
+\PYG{+w}{    }\PYG{n}{marker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:circle}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Плотность рёбер\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Средняя длина пути\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Средняя длина\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{)}
+
+\PYG{n}{combined}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{layout}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{800}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{600}\PYG{p}{))}
+\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{combined}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}parameter\PYGZus{}sweep.png\PYGZdq{}}\PYG{p}{))}
+\end{MintedVerbatim}

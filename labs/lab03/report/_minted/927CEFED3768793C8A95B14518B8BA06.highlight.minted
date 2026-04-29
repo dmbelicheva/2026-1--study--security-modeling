@@ -1,0 +1,50 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{DrWatson}
+\PYG{n+nd}{@quickactivate}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}project\PYGZdq{}}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Graphs}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Plots}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{JLD2}
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{Random}
+
+\PYG{n}{include}\PYG{p}{(}\PYG{n}{srcdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}attack\PYGZus{}graph.jl\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{sizes}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{15}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{21}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{22}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{23}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{25}\PYG{p}{]}
+\PYG{n}{time\PYGZus{}vals}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Float64}\PYG{p}{[]}
+\PYG{n}{path\PYGZus{}counts}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Int}\PYG{p}{[]}
+\PYG{n}{Random}\PYG{o}{.}\PYG{n}{seed!}\PYG{p}{(}\PYG{l+m+mi}{123}\PYG{p}{)}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{k}{in}\PYG{+w}{ }\PYG{n}{sizes}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Размер сети: }\PYG{l+s+si}{\PYGZdl{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{g}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{build\PYGZus{}attack\PYGZus{}graph}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.2}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(),}\PYG{+w}{ }\PYG{p}{[])}
+\PYG{+w}{    }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nd}{@elapsed}\PYG{+w}{ }\PYG{n}{paths}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{find\PYGZus{}all\PYGZus{}paths}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{push!}\PYG{p}{(}\PYG{n}{time\PYGZus{}vals}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n}{push!}\PYG{p}{(}\PYG{n}{path\PYGZus{}counts}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{length}\PYG{p}{(}\PYG{n}{paths}\PYG{p}{))}
+\PYG{+w}{    }\PYG{n}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Время: }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{round}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{digits}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{))}\PYG{l+s}{ с, путей:}
+\PYG{l+s}{    }\PYG{l+s+si}{\PYGZdl{}}\PYG{p}{(}\PYG{n}{length}\PYG{p}{(}\PYG{n}{paths}\PYG{p}{))}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{end}
+
+\PYG{n}{p1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{sizes}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{time\PYGZus{}vals}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{marker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:circle}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Число узлов\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Время (с)\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Время поиска всех путей\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{legend}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{p}{,}
+\PYG{p}{)}
+
+\PYG{n}{p2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{sizes}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{path\PYGZus{}counts}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{marker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+ss}{:circle}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{xlabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Число узлов\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ylabel}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Количество путей\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Количество путей атаки\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{legend}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{false}\PYG{p}{,}
+\PYG{p}{)}
+
+\PYG{n}{combined}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{plot}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{layout}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{800}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{600}\PYG{p}{))}
+\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{combined}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{plotsdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}convergence.png\PYGZdq{}}\PYG{p}{))}
+
+\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{Dict}\PYG{p}{(}\PYG{l+s+ss}{:sizes}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{sizes}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+ss}{:times}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{time\PYGZus{}vals}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+ss}{:path\PYGZus{}counts}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{    }\PYG{n}{path\PYGZus{}counts}\PYG{p}{)}
+\PYG{n+nd}{@save}\PYG{+w}{ }\PYG{n}{datadir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}convergence\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}convergence\PYGZus{}data.jld2\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{data}
+\end{MintedVerbatim}

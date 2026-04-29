@@ -17,14 +17,14 @@ format:
   ### Pdf output format
   beamer:
     pdf-engine: xelatex
-    toc: true
+    toc: false
     toc-title: Содержание
-    number-sections: true
+    number-sections: false
     colorlinks: false
     toc-depth: 2
     aspectratio: 169
     section-titles: true
-    incremental: true
+    incremental: false
     navigation: horizontal
     csquotes: true
     indent: true
